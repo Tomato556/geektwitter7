@@ -1,0 +1,9 @@
+
+
+<%= form_for @relax do |f| %>
+    <%= f.label :title %>
+        <%= f.text_field :title, :size => 140 %> 
+    <%= f.label :body %>
+        <%= f.text_field :body, :size => 140 %> 
+    <%= f.submit "再投稿" %>
+<% end %>

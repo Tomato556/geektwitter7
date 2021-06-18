@@ -1,0 +1,73 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background: linear-gradient(to right, rgb(67, 196, 219), rgb(127, 187, 48));
+    color: #0066ff;//文字の色
+    font: 87.5%/1.5em 'Open Sans', serif;
+    margin: 0;
+}
+header {
+    background-color: #ffffff00;
+    height: 100px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: serif;
+}
+header a {
+    color: #ffffff; 
+    text-decoration: none; 
+}
+header h1 {
+    color: #ffffff;
+    margin-left: 20px;
+}
+.header-list {
+    display: flex;
+    align-items: center;
+}
+header ul {
+    display: flex;
+}
+header li {
+    list-style: none;
+    margin-right: 40px;
+}
+
+footer {
+    color: rgb(180, 178, 178);
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0);
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    justify-content: center;
+}
+
+
+
+@import "bootstrap/scss/bootstrap";
+
+

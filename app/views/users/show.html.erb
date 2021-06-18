@@ -1,0 +1,91 @@
+<%= stylesheet_link_tag 'users', :media => "all" %>
+
+<section id="second-block">
+  <h1>user詳細</h1>
+  <p>名前 : <%= @user.name %></p>
+  <p>メールアドレス : <%= @user.email %></p>
+  <p>プロフィール : <%= @user.profile %></p>
+
+  <% if current_user.id == @user.id %>
+    <%= link_to "編集する", edit_user_registration_path %>
+  <% end %>
+
+    <br><br><br><br>
+
+
+  <h4>ユーザーの投稿一覧</h4><br>
+  <h5>↓↓↓↓あなたのタスク投稿一覧↓↓↓↓</h5>
+    <div class="tasks-container">
+      <% @user.tasks.each do |t| %>
+        <br>
+        <br>
+        <div class="task">
+          <div class="main-box"><%= t.title %>
+            <div class="left-container">
+              <%= truncate(t.body, length:30) %>
+            </div>
+            <div class="right-container">
+                <%= link_to "詳細", task_path(t.id) %>
+              <br>
+              <% if user_signed_in? && current_user.id == t.user_id %>
+                <%= link_to "削除", task_path(t.id), method: :delete %>
+                <!--削除したらマイページに戻るようにしたいuser_path(current_user.id)-->
+              <% end %>
+            </div>
+          </div>
+          
+          <p class="time"><%= t.created_at.to_s(:datetime_jp) %></p>
+        </div>
+      <% end %>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+  <h5>↓↓↓↓あなたの息抜き投稿一覧↓↓↓↓</h5><br>
+  <div class="relaxes-container">
+    <% @user.relaxes.each do |t| %>
+      <div class="relax">
+        <b><%= t.title %></b>
+        <br>
+        <%= image_tag t.image_url, size: "280x210" if t.image? %>
+        <br>
+        <div class="main-box">
+          <div class="left-container">
+              説明
+              <br>
+              <%= truncate(t.body, length:30) do%>
+                  (<%= link_to '続き', relax_path(t.id) %>
+              <% end %>
+          </div>
+
+          <div class="center-container">
+              <br>
+              <br>投稿者
+              <br>
+              <%= t.user.name %>
+          </div>
+
+          <div class="right-container">
+              <% if user_signed_in? && current_user.id == t.user_id %>
+                  <%= link_to "削除", relax_path(t.id), method: :delete %>
+                  <%= link_to "編集", edit_relax_path(t.id) %>
+              <% end %>
+          </div>
+          <p class="time"><%= t.created_at.to_s(:datetime_jp) %></p>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</section>
+
+<section id="third-block">
+    <%= link_to "タスク一覧に戻る", tasks_path %>
+    <%= link_to "息抜き一覧に戻る", relaxes_path %>
+</section>
+
+
+

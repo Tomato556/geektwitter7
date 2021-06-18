@@ -1,0 +1,54 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+#second-block {
+    background-color: #ffffff;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  h3 {
+    margin-bottom: 30px;
+  }
+
+  .tasks-container {
+    display:flex;
+    width: 100%;
+    flex-direction: row-reverse;
+    flex-wrap: wrap-reverse;
+    align-content: space-between;
+}
+
+  .task {
+    border-top: solid #00acee;
+    border-bottom: solid #10e4af;
+    margin: 12px;
+    padding-top: 20px;
+    width: 25%;
+    
+  }
+
+
+  .relaxes-container {
+    display:flex;
+    width: 100%;
+    flex-direction: row-reverse;
+    flex-wrap: wrap-reverse;
+    align-content: space-between;
+}
+.relax {
+    border-top: solid #00acee;
+    border-bottom: solid #10e4af;
+    margin: 12px;
+    width: 25%;
+    padding-top: 20px;
+  }
+
+#third-block {
+  flex-wrap: wrap-reverse;
+    text-align: center;
+  }
+

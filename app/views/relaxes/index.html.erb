@@ -1,0 +1,110 @@
+<%= stylesheet_link_tag 'index', :media => "all" %>
+
+<!DOCTYPE html>
+<html lang="ja">
+
+
+
+
+
+
+<section id="second-block">
+<h1>投稿一覧</h1>
+<h2><%= link_to "新規息抜き投稿",new_relax_path %></h2>
+    <br>
+    <form>
+        <label for="search">本文検索</label>
+        <br>
+        <input type="search" id="search" name="search">
+    </form><br><br>
+
+<div class="relaxes-container">
+    <div class="box">
+        <% @relaxes.each do |t| %>
+            <div class="relax">
+                <b><%= t.title %></b>
+                <br>
+                <%= image_tag t.image_url, size: "250x200" if t.image? %>
+                <br>
+                <div class="main-box">
+                    <div class="left-container">
+                        説明
+                        <br>
+                        <%= truncate(t.body, length:25) do%>
+                            (<%= link_to '続き', relax_path(t.id) %>
+                        <% end %>
+                    </div>
+
+                    <div class="center-container">
+                        <br>
+                        <br>投稿者
+                        <br>
+                        <%= t.user.name %>
+                    </div>
+
+                    <div class="right-container">
+                        <% if user_signed_in? && current_user.id == t.user_id %>
+                            <%= link_to "削除", relax_path(t.id), method: :delete %>
+                            <%= link_to "編集", edit_relax_path(t.id) %>
+                        <% end %>
+                    </div>
+                </div>
+
+                <p class="time"><%= t.created_at.to_s(:datetime_jp) %></p>
+
+                <% if user_signed_in? %>
+                    <% if current_user.already_loved?(t) %>
+                        <%= link_to relax_lofe_path(id: t.id, relax_id: t.id), method: :delete do %>
+                            <i class="fas fa-star fa-gold"></i><%= t.loves.count %>
+                        <% end %>
+                    <% else %>
+                        <%= link_to relax_loves_path(id: t.id, relax_id: t.id), method: :post do %>
+                            <i class="fas fa-star"></i><%= t.loves.count %>
+                        <% end %>
+                    <% end %>
+                <% else %>
+                    <i class="fas fa-heart"></i><%= t.loves.count %>
+                <% end %>
+
+                    <a href="/relaxes/<%= t.id %>"><i class="fas fa-comments fa-blue"></i></a><%= t.comments.count %>
+                <%= link_to "詳細", relax_path(t.id) %>
+            </div>
+        <% end %>
+    </div>
+</div>
+
+
+<%= paginate @relaxes %>
+</section>
+
+
+
+
+<section id="third-block">
+
+    <div class="post-container">
+    <p class="title">投稿フォーム</p>
+        <%= form_for(@relax, :url => { controller:'relaxes', action:'create'})do |f| %>
+        <%= f.label :投稿内容 %>
+        <br>
+        <%= f.text_area :title, :size => "10×1" %>
+        <br>
+        <%= f.label :投稿詳細 %>
+        <br>
+        <%= f.text_area :body,size: "50×10" %>
+        <br>
+            <div class="field">
+                <%= f.label :image %>
+                <br>
+                <%= f.file_field :image %>
+            </div>
+            <br>
+            <div class="wrap">
+                <button class="button">送信</button>
+            </div>
+        <br>
+        <% end %>
+    </div>
+
+</section>
+

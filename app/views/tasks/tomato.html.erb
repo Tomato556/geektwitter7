@@ -1,0 +1,27 @@
+<%= stylesheet_link_tag 'tomato', :media => "all" %>
+
+<section id="first-block">
+    <div class="title-container">
+
+<div class="bg_test">
+    <div class="bg_test-text">
+
+
+
+        <h1>プロダクトにようこそ！</h1>
+        <br>
+        <h2>Let's do the task together!!</h2>
+        <h3><%= link_to "ログイン", new_task_path %>
+        <%= link_to "新規登録", new_user_registration_path %></h3>
+            <%= link_to tasks_path do %>
+                <br>
+                <%= link_to "タスク一覧", tasks_path %>
+                <%= link_to "息抜き一覧", relaxes_path %>
+            <% end %>
+    </div>
+</section>
+
+
+
+    </div>
+</div>

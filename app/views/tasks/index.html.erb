@@ -1,0 +1,78 @@
+<%= stylesheet_link_tag 'index', :media => "all" %>
+
+<section id="second-block">
+
+    <h1>投稿一覧</h1>
+    <h2><%= link_to "新規タスク投稿",new_task_path %></h2>
+    <br>
+
+    <form>
+        <label for="search">本文検索</label>
+        <br>
+        <input type="search" id="search" name="search">
+    </form>
+
+    <br><br>
+
+    <div class="tasks-container">
+        <% @tasks.each do |t| %>
+            <div class="task">
+                <b><%= t.title %></b>
+                <div class="main-box">
+                    <div class="left-container"></div><%= truncate(t.body, length:16) %>
+                        <div class="center-container"><br><%= t.user.name %>
+                        </div>
+
+                    </div>
+                    <p class="time"><%= t.created_at.to_s(:datetime_jp) %></p>
+                    <div class="right-container">
+                        <br>
+                        <%= link_to "詳細", task_path(t.id) %>
+                        <% if user_signed_in? && current_user.id == t.user_id %>
+                            <%= link_to "削除", task_path(t.id), method: :delete %>
+                        <% end %>
+                    
+                    <% if user_signed_in? %>
+                        <% if current_user.already_liked?(t) %>
+                            <%= link_to task_like_path(id: t.id, task_id: t.id), method: :delete do %>
+                                <i class="fas fa-heartbeat fa-pink"></i><%= t.likes.count %>
+                            <% end %>
+                        <% else %>
+                            <%= link_to task_likes_path(id: t.id, task_id: t.id), method: :post do %>
+                                <i class="fas fa-heart"></i><%= t.likes.count %>
+                            <% end %>
+                        <% end %>
+                    <% else %>
+                        <i class="fas fa-heart"></i><%= t.likes.count %>
+                    <% end %>
+                </div>
+            </div>
+        <% end %></div>
+    </div>
+    <%= paginate @tasks %>
+    <br><br><br>
+</section>
+
+
+<section id="third-block">
+    <div class="post-container">
+        <p class="title">投稿フォーム</p>
+        <%= form_for(@task, :url => { controller:'tasks', action:'create'})do |f| %>
+            <%= f.label :投稿内容 %>
+                <br>
+            <%= f.text_area :title, :size => "10×1" %>
+                <br>
+            <%= f.label :投稿詳細 %>
+                <br>
+            <%= f.text_area :body,size: "50×10" %>
+                <br>
+                <br>
+            <div class="wrap">
+                <button class="button">送信</button>
+            </div>
+            <br>
+        <% end %>
+    </div>
+</section>
+    
+

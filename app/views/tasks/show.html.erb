@@ -1,0 +1,30 @@
+
+    <h3>タスク詳細</h3>
+    <div class="task">
+        <p><%= @task.title %></p>
+        <p><%= @task.body %></p>
+        <p><%= @task.created_at.to_s(:datetime_jp) %></p>
+    
+
+    <% if user_signed_in? %>
+        <% if current_user.already_liked?(@task) %>
+            <%= link_to task_like_path(@task), method: :delete do %>
+            <i class="fas fa-heart"></i><%= @task.likes.count %>
+            <% end %>
+        <% else %>
+            <%= link_to task_likes_path(@task), method: :post do %>
+            <i class="fas fa-heart"></i><%= @task.likes.count %>
+            <% end %>
+        <% end %>
+    <% else %>
+        <i class="fas fa-heart"></i><%= @task.likes.count %>
+    <% end %>
+
+
+<h2>いいねしたユーザー</h2>
+    <% @task.liked_users.each do |user| %>
+        <li><%= user.name %></li>
+    <% end %>
+
+    </div>
+<%= link_to "一覧に戻る", tasks_path %>

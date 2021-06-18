@@ -1,0 +1,40 @@
+a {
+    color: rgb(47, 204, 180); 
+}
+
+
+body {
+    color:rgb(0, 0, 0)
+    
+}
+
+first-block {
+    background-image: url("../images/トマト.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 550px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .title-container {
+        text-align: center;
+    }
+
+
+    .bg_test {
+        background-size:contain;
+        background-position:center;
+        background-size:cover;  
+        height:500px;  
+        width:100%;
+        background-image: url(Pexels.jpg);    /* 背景画像指定 */
+    }
+
+    .bg_test {
+        text-align:  center;    /* 文字中央寄せ */
+        padding:  150px;        /* 余白指定 */
+        border: solid 2px;      /* 枠線指定 */
+    }
