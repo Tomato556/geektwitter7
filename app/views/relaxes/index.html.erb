@@ -19,61 +19,77 @@
     </form><br><br>
 
 <div class="relaxes-container">
-<div class="d-flex justify-content-center">
-    <div class="box">
-        <% @relaxes.each do |t| %>
-            <div class="relax">
-                <b><%= t.title %></b>
-                <br>
-                <%= image_tag t.image_url, size: "250x200" if t.image? %>
-                <br>
-                <div class="main-box">
-                    <div class="left-container">
-                        説明
-                        <br>
-                        <%= truncate(t.body, length:25) do%>
-                            (<%= link_to '続きを読む', relax_path(t.id) %>
-                        <% end %>
+    <div class="d-flex justify-content-center">
+        <div class="box">
+            <% @relaxes.each do |t| %>
+                <div class="relax">
+<!--
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title"><%= t.title %></h5>
+            <p class="card-text"><%= t.body %></p>
+            <a href="#" class="btn btn-primary">詳細へ</a>
+        </div>
+    </div>
+-->
+                    <b><%= t.title %></b>
+                    <br>
+                    <%= image_tag t.image_url, size: "250x200" if t.image? %>
+                    <br>
+                    <div class="main-box">
+                        <div class="left-container">
+                            説明
+                            <br>
+                            <%= truncate(t.body, length:25) do%>
+                                (<%= link_to '続きを読む', relax_path(t.id) %>
+                            <% end %>
+                        </div>
+
+                        <div class="center-container">
+                            <br>
+                            <br>投稿者
+                            <br>
+                            <%= t.user.name %>
+                        </div>
+
+                        <div class="right-container">
+                            <% if user_signed_in? && current_user.id == t.user_id %>
+                                <%= link_to "削除", relax_path(t.id), method: :delete %>
+                                <%= link_to "編集", edit_relax_path(t.id) %>
+                            <% end %>
+                        </div>
                     </div>
 
-                    <div class="center-container">
-                        <br>
-                        <br>投稿者
-                        <br>
-                        <%= t.user.name %>
-                    </div>
+                    <p class="time"><%= t.created_at.to_s(:datetime_jp) %></p>
 
-                    <div class="right-container">
-                        <% if user_signed_in? && current_user.id == t.user_id %>
-                            <%= link_to "削除", relax_path(t.id), method: :delete %>
-                            <%= link_to "編集", edit_relax_path(t.id) %>
-                        <% end %>
-                    </div>
-                </div>
-
-                <p class="time"><%= t.created_at.to_s(:datetime_jp) %></p>
-
-                <% if user_signed_in? %>
-                    <% if current_user.already_loved?(t) %>
-                        <%= link_to relax_lofe_path(id: t.id, relax_id: t.id), method: :delete do %>
-                            <i class="fas fa-star fa-gold"></i><%= t.loves.count %>
+                    <% if user_signed_in? %>
+                        <% if current_user.already_loved?(t) %>
+                            <%= link_to relax_lofe_path(id: t.id, relax_id: t.id), method: :delete do %>
+                                <i class="fas fa-star fa-gold"></i><%= t.loves.count %>
+                            <% end %>
+                        <% else %>
+                            <%= link_to relax_loves_path(id: t.id, relax_id: t.id), method: :post do %>
+                                <i class="fas fa-star"></i><%= t.loves.count %>
+                            <% end %>
                         <% end %>
                     <% else %>
-                        <%= link_to relax_loves_path(id: t.id, relax_id: t.id), method: :post do %>
-                            <i class="fas fa-star"></i><%= t.loves.count %>
-                        <% end %>
+                        <i class="fas fa-heart"></i><%= t.loves.count %>
                     <% end %>
-                <% else %>
-                    <i class="fas fa-heart"></i><%= t.loves.count %>
-                <% end %>
 
-                    <a href="/relaxes/<%= t.id %>"><i class="fas fa-comments fa-blue"></i></a><%= t.comments.count %>
-                <%= link_to "詳細", relax_path(t.id) %>
-            </div>
-        <% end %>
+                        <a href="/relaxes/<%= t.id %>"><i class="fas fa-comments fa-blue"></i></a><%= t.comments.count %>
+                    <%= link_to "詳細", relax_path(t.id) %>
+                </div>
+            <% end %>
+        </div>
     </div>
 </div>
-</div>
+
+
+<% @relaxes.each do |t| %>
+
+<% end %>
+
 
 
 <%= paginate @relaxes %>

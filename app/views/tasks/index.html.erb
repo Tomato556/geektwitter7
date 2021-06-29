@@ -1,5 +1,9 @@
 <%= stylesheet_link_tag 'index', :media => "all" %>
 
+<!DOCTYPE html>
+<html lang="ja">
+
+<br><br><br><br>
 <section id="second-block">
 
     <h1>投稿一覧</h1>
@@ -19,7 +23,10 @@
             <div class="task">
                 <b><%= t.title %></b>
                 <div class="main-box">
-                    <div class="left-container"></div><%= truncate(t.body, length:16) %>
+                    <div class="left-container"></div>
+                        <%= truncate(t.body, length:25) do%>
+                            (<%= link_to '続きを読む', task_path(t.id) %>
+                        <% end %>
                         <div class="center-container"><br><%= t.user.name %>
                         </div>
 

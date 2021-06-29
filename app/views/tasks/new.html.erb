@@ -1,5 +1,9 @@
 <%= stylesheet_link_tag 'new', :media => "all" %>
-<br><br><br><br><br><br><br>
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<br><br><br><br>
 <div class="post-container">
     <p class="title">新規タスク投稿フォーム</p>
     <%= form_for(@task, :url => { controller:'tasks', action:'create'})do |f| %>
