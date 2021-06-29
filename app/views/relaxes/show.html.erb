@@ -1,4 +1,6 @@
-
+<%= stylesheet_link_tag 'show', :media => "all" %>
+<section id="second-block">
+<br><br><br>
     <h3>息抜き詳細</h3>
     <div class="relax">
         <p><%= @relax.title %></p>
@@ -40,15 +42,16 @@
         <% end %>
     <% end %>
 </div>
-
+    </div>
 <h2>いいねしたユーザー</h2>
     <% @relax.loved_users.each do |user| %>
         <li><%= user.name %></li>
     <% end %>
 
-    </div>
+
     <%= link_to "編集する", edit_relax_path(@relax.id) %>
     <%= link_to "一覧に戻る", relaxes_path %>
 
 
 <br><br><br>
+</section>
