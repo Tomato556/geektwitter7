@@ -17,7 +17,7 @@
   .tasks-container {
     display:flex;
     width: 100%;
-    flex-direction: row-reverse;
+    flex-direction: row;
     flex-wrap: wrap-reverse;
     align-content: space-between;
 }
@@ -35,7 +35,7 @@
   .relaxes-container {
     display:flex;
     width: 100%;
-    flex-direction: row-reverse;
+    flex-direction: row;
     flex-wrap: wrap-reverse;
     align-content: space-between;
 }

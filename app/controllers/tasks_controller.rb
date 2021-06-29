@@ -2,12 +2,12 @@ class TasksController < ApplicationController
 
     def index
         if params[:search] == nil
-            @tasks= Task.all.page(params[:page]).per(3)
+            @tasks= Task.all.page(params[:page]).per(3).order(id: "DESC")
         elsif params[:search] == ''
-            @tasks= Task.all.page(params[:page]).per(3)
+            @tasks= Task.all.page(params[:page]).per(3).order(id: "DESC")
         else
             #部分検索
-            @tasks = Task.where("body LIKE ? ",'%' + params[:search] + '%').page(params[:page]).per(3)
+            @tasks = Task.where("body LIKE ? ",'%' + params[:search] + '%').page(params[:page]).per(3).order(id: "DESC")
         end
         @task = Task.new
     end

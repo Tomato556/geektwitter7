@@ -1,11 +1,11 @@
 .box {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
 }
 
 
 #second-block {
-  background-color: #ffffff;
+  background-color: #fdfdec;
   text-align: center;
   padding-top: 100px;
   padding-bottom: 100px;
@@ -43,13 +43,15 @@
 #third-block {
   background-color: #ffffff00;
   text-align: center;
-  padding-top: 70px;
-  padding-bottom: 70px;
+  padding-top:70px;
+  height: 600px;
+  
 }
 
 .post-container {
-  color: rgb(185, 221, 182);
+  color: rgb(14, 14, 14);
   margin: 50px auto;
+  padding-top: 50px ;
   width: 50%;
   border: solid #ffffff00;
   border-radius: 10px;
@@ -209,7 +211,7 @@ h3 {
 
 .relaxes-container{
   display:flex;
-  width: 100%;
+  width: auto 0;
   justify-content:center
   
 }
@@ -241,7 +243,7 @@ a,span{
 
 
 .current{
-  background:rgb(86, 204, 219);
+  background:rgba(38, 165, 38, 0.582);
   border-radius: 15px;
 }
 .dots{

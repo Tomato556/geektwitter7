@@ -2,12 +2,12 @@ class RelaxesController < ApplicationController
 
     def index
         if params[:search] == nil
-            @relaxes= Relax.all.page(params[:page]).per(3)
+            @relaxes= Relax.all.page(params[:page]).per(3).order(id: "DESC")
         elsif params[:search] == ''
-            @relaxes= Relax.all.page(params[:page]).per(3)
+            @relaxes= Relax.all.page(params[:page]).per(3).order(id: "DESC")
         else
             #部分検索
-            @relaxes = Relax.where("body LIKE ? ",'%' + params[:search] + '%').page(params[:page]).per(3)
+            @relaxes = Relax.where("body LIKE ? ",'%' + params[:search] + '%').page(params[:page]).per(3).order(id: "DESC")
             
         end
         @relax = Relax.new

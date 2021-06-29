@@ -1,5 +1,5 @@
 a {
-    color: rgb(47, 204, 180); 
+    color: rgb(98, 231, 86); 
 }
 
 
@@ -8,16 +8,7 @@ body {
     
 }
 
-first-block {
-    background-image: url("../images/トマト.jpg");
-    background-size: cover;
-    width: 100%;
-    height: 550px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
     .title-container {
         text-align: center;
@@ -31,6 +22,7 @@ first-block {
         height:500px;  
         width:100%;
         background-image: url(Pexels.jpg);    /* 背景画像指定 */
+        
     }
 
     .bg_test {

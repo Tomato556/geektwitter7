@@ -6,7 +6,7 @@
 
 
 
-
+<br><br><br><br>
 
 <section id="second-block">
 <h1>投稿一覧</h1>
@@ -19,6 +19,7 @@
     </form><br><br>
 
 <div class="relaxes-container">
+<div class="d-flex justify-content-center">
     <div class="box">
         <% @relaxes.each do |t| %>
             <div class="relax">
@@ -31,7 +32,7 @@
                         説明
                         <br>
                         <%= truncate(t.body, length:25) do%>
-                            (<%= link_to '続き', relax_path(t.id) %>
+                            (<%= link_to '続きを読む', relax_path(t.id) %>
                         <% end %>
                     </div>
 
@@ -72,6 +73,7 @@
         <% end %>
     </div>
 </div>
+</div>
 
 
 <%= paginate @relaxes %>
@@ -81,7 +83,7 @@
 
 
 <section id="third-block">
-
+<div id="wrapper">
     <div class="post-container">
     <p class="title">投稿フォーム</p>
         <%= form_for(@relax, :url => { controller:'relaxes', action:'create'})do |f| %>
@@ -102,7 +104,7 @@
             <div class="wrap">
                 <button class="button">送信</button>
             </div>
-        <br>
+        <br><br><br><br><br><br><br><br><br>
         <% end %>
     </div>
 
