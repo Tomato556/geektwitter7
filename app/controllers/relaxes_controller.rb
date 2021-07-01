@@ -53,6 +53,18 @@ class RelaxesController < ApplicationController
         redirect_to action: :index
     end
 
+    def cards
+        if params[:search] == nil
+            @relaxes= Relax.all.order(id: "DESC")
+        elsif params[:search] == ''
+            @relaxes= Relax.all.order(id: "DESC")
+        else
+            #部分検索
+            @relaxes = Relax.where("body LIKE ? ",'%' + params[:search] + '%').order(id: "DESC")
+            
+        end
+    end
+
     private
 
     def relax_params

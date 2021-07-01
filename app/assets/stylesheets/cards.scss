@@ -1,0 +1,43 @@
+#first-block {
+    background-color: #fdfdec;
+    padding-top: 30px;
+    padding-bottom: 50px;
+
+    font-family: serif;
+  }
+
+.card-deck {
+    padding: 20px;
+    
+
+}
+.card-header {
+    background-color: #ffffff;
+    align-items: center;
+}
+
+.list-group-item {
+    text-align: right;
+    padding: 12px 10px 12px 0px;
+
+}
+
+.col-sm-4{
+    padding: 20px;
+}
+
+input {
+    position: relative;
+    border: 1px solid gray;
+    border-radius: 0px;
+    padding: 5px;;
+    font-size: 100%;
+    margin:2px;
+    cursor:pointer;
+ }
+
+
+ input[type="search"] {
+    width: 65%;
+    height: 40px;
+  }

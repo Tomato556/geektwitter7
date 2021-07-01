@@ -1,0 +1,75 @@
+<%= stylesheet_link_tag 'cards', :media => "all" %>
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<br><br><br><br>
+<section id="second-block">
+    <h1>投稿一覧</h1>
+</section>
+
+<section id="first-block">
+
+    <div class="card-deck">
+        <% @relaxes.each do |t| %>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-header">
+                        <%= link_to relax_path(t.id) do %>
+                            <%= image_tag t.image_url, width: '100%', height: '100%' if t.image? %>
+                            <title><%= t.title %></title>
+                        <% end %>
+                    </div>
+                        <!--<%= image_tag t.image_url, size: "250x200" if t.image? %> -->
+                    <div class="card-body">
+                        <h5 class="card-title"><b><%= t.title %></b></h5>
+                            <p class="card-text"><%= t.body %></p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">投稿者　　<%= t.user.name %></li>
+                    <!--    <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                    -->
+                    </ul>
+                    <div class="card-footer">
+                        <small class="text-muted">
+                            <p class="time"><%= t.created_at.to_s(:datetime_jp) %></p>
+                            <% if user_signed_in? %>
+                                <% if current_user.already_loved?(t) %>
+                                    <%= link_to relax_lofe_path(id: t.id, relax_id: t.id), method: :delete do %>
+                                        <i class="fas fa-star fa-gold"></i><%= t.loves.count %>
+                                    <% end %>
+                                <% else %>
+                                    <%= link_to relax_loves_path(id: t.id, relax_id: t.id), method: :post do %>
+                                        <i class="fas fa-star"></i><%= t.loves.count %>
+                                    <% end %>
+                                <% end %>
+                            <% else %>
+                                <i class="fas fa-heart"></i><%= t.loves.count %>
+                            <% end %>
+                            <a href="/relaxes/<%= t.id %>"><i class="fas fa-comments fa-blue"></i></a><%= t.comments.count %>
+                            <%= link_to "詳細", relax_path(t.id) %>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</section>
+
+
+
+<section id="second-block">
+<h1>投稿一覧</h1>
+<h2><%= link_to "新規息抜き投稿",new_relax_path %></h2>
+    <br>
+    <form>
+        <label for="search">本文検索</label>
+        <br>
+        <input type="search" id="search" name="search">
+    </form><br><br>
+
+
+</section>
+
+

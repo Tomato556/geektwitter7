@@ -48,7 +48,7 @@
         <% end %>
         <li><b><%= link_to "ホーム", tasks_tomato_path %></b></li>
         <li><b><%= link_to "タスク",tasks_path %></b></li>
-        <li><b><%= link_to "息抜き",relaxes_path %></b></li>
+        <li><b><%= link_to "息抜き",relaxes_cards_path %></b></li>
           <% if user_signed_in? %>
             <li><b><%=  link_to'ログアウト', destroy_user_session_path, method: :delete %></b></li>
           <% else %>
