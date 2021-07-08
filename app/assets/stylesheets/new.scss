@@ -81,14 +81,10 @@
   
   textarea {
     width: 450px;
-    max-width: 450px;
     height: 110px;
     max-height: 110px;
     padding: 15px;
-    
     background: rgb(253, 253, 253);//フォームの箱の中の色
-    
-    
     color: #000000;//文字の色
     font-family: serif;
     font-size: 1.3em;
@@ -102,7 +98,7 @@
   }
   
   textarea:hover {
-    background: #e6e6e6;
+    background: #d3d3d3;
   
   }
   
@@ -127,5 +123,28 @@
   }
 
   body {
-    background : #fdfdec;
+    background : #d3d3d3;
   }
+
+  #user_email.col-md-12_form-control  {
+    position: relative;
+    border: 1px solid gray;
+    border-radius: 0px;
+    padding: 5px;
+    font-size: 100%;
+    margin:2px;
+    cursor:pointer;
+    background : #ffffff;
+    width: 100% ;
+  }
+#user_password.col-md-12  {
+    position: relative;
+    border: 1px solid gray;
+    border-radius: 0px;
+    padding: 5px;
+    font-size: 100%;
+    margin:2px;
+    cursor:pointer;
+    background : #ffffff;
+    width: 100% ;
+ }

@@ -40,22 +40,22 @@
 
   
     <header>
-      <h1>タスク報告サイト</h1>
-      <div class="header-list">
-      <ul>
-        <% if user_signed_in? %>
-        <li><b><%= link_to "マイページ", user_path(current_user.id) %></b></li>
-        <% end %>
-        <li><b><%= link_to "ホーム", tasks_tomato_path %></b></li>
-        <li><b><%= link_to "タスク",tasks_path %></b></li>
-        <li><b><%= link_to "息抜き",relaxes_cards_path %></b></li>
+
+      <div class="header-list" style="z-index:10000" >
+        <ul>
           <% if user_signed_in? %>
-            <li><b><%=  link_to'ログアウト', destroy_user_session_path, method: :delete %></b></li>
-          <% else %>
-            <li><b><%= link_to "ログイン", new_task_path %></b></li>
+          <li><b><%= link_to "マイページ", user_path(current_user.id) %></b></li>
           <% end %>
-          
-      </ul>
+          <li><b><%= link_to "ホーム", tasks_tomato_path %></b></li>
+          <li><b><%= link_to "タスク",tasks_path %></b></li>
+          <li><b><%= link_to "息抜き",relaxes_cards_path %></b></li>
+            <% if user_signed_in? %>
+              <li><b><%=  link_to'ログアウト', destroy_user_session_path, method: :delete %></b></li>
+            <% else %>
+              <li><b><%= link_to "ログイン", new_task_path %></b></li>
+            <% end %>
+            
+        </ul>
       </div>
     </header>
     <%= yield %>

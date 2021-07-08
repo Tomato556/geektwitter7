@@ -1,8 +1,8 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-@charset "utf-8";
-@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+//@charset "utf-8";
+//@import url(http://weloveiconfonts.com/api/?family=fontawesome);
 
 [class*="fontawesome-"]:before {
   font-family: 'FontAwesome', sans-serif;
@@ -10,14 +10,10 @@
 
 textfield {
   width: 450px;
-  max-width: 450px;
   height: 110px;
   max-height: 110px;
   padding: 15px;
-  
-  background: rgb(253, 253, 253);//フォームの箱の中の色
-  
-  
+  background-color: rgb(253, 253, 253);//フォームの箱の中の色
   color: #000000;//文字の色
   font-family: serif;
   font-size: 1.3em;
@@ -31,6 +27,13 @@ textfield {
 }
 
 textarea:hover {
-  background: #e6e6e6;
+  background: #d3d3d36;
+}
 
+.container {
+  background-color: #d3d3d3;
+  font-family: serif;
+  width: auto ;
+  margin: 0;
+  max-width: 12000px;
 }
