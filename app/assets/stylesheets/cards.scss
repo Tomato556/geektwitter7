@@ -12,14 +12,31 @@
 
 }
 .card-header {
-    background-color: #ffffff;
-    align-items: center;
+  background-color: #ffffff;
+  align-items: center;
+  object-fit: cover;
+  
 }
 
-.list-group-item {
+.box2{
+  width: 100%;
+  height: 0;
+}
+
+
+
+.list-group-item1 {
+  text-align: left;
+  padding: 12px 10px 12px 0px;
+
+}
+.list-group-item2 {
     text-align: right;
     padding: 12px 10px 12px 0px;
+}
 
+li {
+	list-style-type:none;		/*リストマーカー無しにする*/
 }
 
 .col-md-4{
@@ -95,3 +112,9 @@ input {
   padding-right: 0px !important;
 }
 
+a, span {
+  width: 99% ;
+  height: 30px ;
+  margin: 0  auto ;
+  
+}
