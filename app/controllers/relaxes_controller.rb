@@ -63,6 +63,7 @@ class RelaxesController < ApplicationController
             @relaxes = Relax.where("body LIKE ? ",'%' + params[:search] + '%').order(id: "DESC")
             
         end
+        @relax = Relax.new
     end
 
     private

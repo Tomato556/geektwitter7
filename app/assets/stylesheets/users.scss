@@ -18,13 +18,11 @@
     display:flex;
     width: 100%;
     flex-direction: row;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
     align-content: space-between;
 }
 
   .task {
-    border-top: solid #00acee;
-    border-bottom: solid #10e4af;
     margin: 12px;
     padding-top: 20px;
     width: 25%;
@@ -40,8 +38,7 @@
     align-content: space-between;
 }
 .relax {
-    border-top: solid #00acee;
-    border-bottom: solid #10e4af;
+
     margin: 12px;
     width: 25%;
     padding-top: 20px;

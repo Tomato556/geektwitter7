@@ -2,7 +2,6 @@
     background-color: #d3d3d3;
     padding-top: 30px;
     padding-bottom: 50px;
-
     font-family: serif;
   }
 
@@ -112,9 +111,40 @@ input {
   padding-right: 0px !important;
 }
 
+.modal-header {
+  display: block;
+}
+
+span {
+  margin: 0;
+}
+
 a, span {
-  width: 99% ;
+  width: 90% ;
   height: 30px ;
   margin: 0  auto ;
   
 }
+
+.modal-header .close{
+  padding: 0 ;
+}
+
+textarea {
+  width: 450px;
+  height: 110px;
+  max-height: 110px;
+  padding: 15px;
+  background: rgb(253, 253, 253);//フォームの箱の中の色
+  color: #000000;//文字の色
+  font-family: serif;
+  font-size: 1.3em;
+  
+  border: solid 1px #000000;
+  
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+}
+
