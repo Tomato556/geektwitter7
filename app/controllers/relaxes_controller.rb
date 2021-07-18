@@ -54,16 +54,16 @@ class RelaxesController < ApplicationController
     end
 
     def cards
-        if params[:search] == nil
-            @relaxes= Relax.all.order(id: "DESC")
-        elsif params[:search] == ''
-            @relaxes= Relax.all.order(id: "DESC")
-        else
-            #部分検索
-            @relaxes = Relax.where("body LIKE ? ",'%' + params[:search] + '%').order(id: "DESC")
-            
-        end
-        @relax = Relax.new
+      if params[:search] == nil
+        @relaxes= Relax.all.page(params[:page]).per(12).order(id: "DESC")
+    elsif params[:search] == ''
+        @relaxes= Relax.all.page(params[:page]).per(12).order(id: "DESC")
+    else
+        #部分検索
+        @relaxes = Relax.where("body LIKE ? ",'%' + params[:search] + '%').page(params[:page]).per(12).order(id: "DESC")
+        
+    end
+    @relax = Relax.new
     end
 
     private

@@ -11,15 +11,14 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <!--==============レイアウトを制御する独自のCSSを読み込み===============-->
     <link rel="stylesheet" type="text/css" href="http://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/move02/5-11/css/reset.css">
     <link rel="stylesheet" type="text/css" href="http://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/move02/5-11/css/5-11.css">
-
-
-  </head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Hachi+Maru+Pop&display=swap" rel="stylesheet">  </head>
 
 <link href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css" rel="stylesheet">
   <link href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/4-1-2/css/4-1-2.css" rel="stylesheet">
@@ -29,41 +28,72 @@
 <!--script src="index.js"></script-->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-
-
   <main>
-
-  
     <header>
-
-      <div class="header-list" style="z-index:10000" >
+      <div class="header-list" style="z-index:10" >
+      <h1><%= link_to "TOMATO'S TASK", tasks_tomato_path %></h1>
         <ul>
           <% if user_signed_in? %>
-          <li><b><%= link_to "マイページ", user_path(current_user.id) %></b></li>
+          <p><li><b><%= link_to "マイページ", user_path(current_user.id) %></b></li>
           <% end %>
-          <li><b><%= link_to "ホーム", tasks_tomato_path %></b></li>
           <li><b><%= link_to "タスク",tasks_path %></b></li>
           <li><b><%= link_to "息抜き",relaxes_cards_path %></b></li>
             <% if user_signed_in? %>
               <li><b><%=  link_to'ログアウト', destroy_user_session_path, method: :delete %></b></li>
+              
             <% else %>
-              <li><b><%= link_to "ログイン", new_task_path %></b></li>
+              <li><b><%= link_to "ログイン", new_user_session_path %></b></li>
+              <li><b><%= link_to "新規登録", new_user_registration_path %></b></li>
             <% end %>
-            
+            </p>
         </ul>
       </div>
     </header>
+    <p id="page-top"><a href="#">Page Top</a></p>
     <%= yield %>
-
+      
+      
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-            <!--==============JQuery読み込み===============-->
+            <!--JQuery読み込み-->
       <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
       <script src="https://rawgit.com/kimmobrunfeldt/progressbar.js/master/dist/progressbar.min.js"></script>
 
       <!--自作のJS-->
       <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/4-1-2/js/4-1-2.js"></script>
+      <script>
+      function PageTopAnime() {
+	var scroll = $(window).scrollTop();
+	if (scroll >= 200){//上から200pxスクロールしたら
+		$('#page-top').removeClass('DownMove');//#page-topについているDownMoveというクラス名を除く
+		$('#page-top').addClass('UpMove');//#page-topについているUpMoveというクラス名を付与
+	}else{
+		if($('#page-top').hasClass('UpMove')){//すでに#page-topにUpMoveというクラス名がついていたら
+			$('#page-top').removeClass('UpMove');//UpMoveというクラス名を除き
+			$('#page-top').addClass('DownMove');//DownMoveというクラス名を#page-topに付与
+		}
+	}
+}
+
+// 画面をスクロールをしたら動かしたい場合の記述
+$(window).scroll(function () {
+	PageTopAnime();/* スクロールした際の動きの関数を呼ぶ*/
+});
+
+// ページが読み込まれたらすぐに動かしたい場合の記述
+$(window).on('load', function () {
+	PageTopAnime();/* スクロールした際の動きの関数を呼ぶ*/
+});
+
+// #page-topをクリックした際の設定
+$('#page-top a').click(function () {
+    $('body,html').animate({
+        scrollTop: 0//ページトップまでスクロール
+    }, 500);//ページトップスクロールの速さ。数字が大きいほど遅くなる
+    return false;//リンク自体の無効化
+});
+</script>
 
     </main>
     

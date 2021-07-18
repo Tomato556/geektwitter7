@@ -35,7 +35,7 @@
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 500;
-    color: rgba(75, 182, 43, 0.705); //ボタンに表示する文字
+    color: rgba(129, 185, 112, 0.705); //ボタンに表示する文字
     background-color: #fff;
     border: none;
     border-radius: 45px;
@@ -98,7 +98,7 @@
   }
   
   textarea:hover {
-    background: #d3d3d3;
+    background: #ececec;
   
   }
   
@@ -123,10 +123,10 @@
   }
 
   body {
-    background : #d3d3d3;
+    background : #ececec;
   }
 
-  #user_email.col-md-12_form-control  {
+  #user_email.col-lg-12_form-control  {
     position: relative;
     border: 1px solid gray;
     border-radius: 0px;
@@ -137,7 +137,7 @@
     background : #ffffff;
     width: 100% ;
   }
-#user_password.col-md-12  {
+#user_password.col-lg-12  {
     position: relative;
     border: 1px solid gray;
     border-radius: 0px;

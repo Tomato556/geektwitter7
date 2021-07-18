@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-
+<div class="bg_pattern Paper_v2"></div>
 <section id="second-block">
 <br><br>
   <h1>投稿一覧</h1>
@@ -22,11 +22,12 @@
   <div class="col-10">
     <div class="tasks-container">
       <% @tasks.each do |t| %>
-        <div class="col-md-4">
+        <div class="col-lg-4">
           <div class="task">
             <div style="background: #ccccbb; opacity: 0.2; transform: rotate(3deg); width: 35%; height: 35px; margin: 0 auto -1em auto;">
             </div><!-- ここまで付箋テープ -->
-            <div class="l-border l-p-t l-p-r l-p-b l-p-l" style="background: rgba(177, 228, 177, 0.582); box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15); padding: 25px 15px 15px 15px;">
+            
+            <div class="l-border l-p-t l-p-r l-p-b l-p-l" style="background: #e2fde2; box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15); padding: 25px 15px 15px 15px;">
               <p style="margin: 0;">
               <b><h4><%= t.title %></b></h4>
                 <div class="main-box"><br>
@@ -36,16 +37,15 @@
                     <% end %>
                   </div>
                   <div class="center-container">
-                    <br>
-                    <%= t.user.name %>
-                    </div>
+                    <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
                   </div>
+                </div>
                   <p class="time"><%= t.created_at.to_s(:datetime_jp) %></p>
-                  <div class="right-container">
-                    <%= link_to "詳細", task_path(t.id) %>
-                    <% if user_signed_in? && current_user.id == t.user_id %>
-                      <%= link_to "削除", task_path(t.id), method: :delete %>
-                    <% end %>
+                <div class="right-container">
+                  <%= link_to "詳細", task_path(t.id) %>
+                  <% if user_signed_in? && current_user.id == t.user_id %>
+                    <%= link_to "削除", task_path(t.id), method: :delete %>
+                  <% end %>
                   <% if user_signed_in? %>
                     <% if current_user.already_liked?(t) %>
                       <%= link_to task_like_path(id: t.id, task_id: t.id), method: :delete do %>
@@ -68,8 +68,8 @@
       <% end %>
     </div>
   </div>
-  <div class="col-1"></div>
 </div>
+
   <%= paginate @tasks %>
   <br><br><br>
 </section>
@@ -94,7 +94,6 @@
       <br>
     <% end %>
   </div>
-  <br><br><br><br>
 </section>
     
 

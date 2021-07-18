@@ -7,6 +7,7 @@ resources :users, only: [:show]
 get 'relaxes' => 'relaxes#cards'
 get 'relaxes/cards' => 'relaxes#cards'
 get 'tasks/tomato' => 'tasks#tomato'
+get 'tasks/hiyo' => 'tasks#hiyo'
 root 'tasks#tomato'
 
   resources :tasks do

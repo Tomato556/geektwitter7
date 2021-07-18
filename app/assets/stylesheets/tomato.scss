@@ -1,5 +1,6 @@
 a {
     color: rgb(98, 231, 86); 
+    
 }
 
 
@@ -10,23 +11,42 @@ body {
 
 
 
-    .title-container {
-        text-align: center;
-    }
+.title-container {
+  text-align: center;
+}
 
 
-    .bg_test {
-        background-size:contain;
-        background-position:center;
-        background-size:cover;  
-        height:500px;  
-        width:100%;
-        background-image: url(Pexels.jpg);    /* 背景画像指定 */
-        
-    }
 
-    .bg_test {
-        text-align:  center;    /* 文字中央寄せ */
-        padding:  150px;        /* 余白指定 */
-        border: solid 2px;      /* 枠線指定 */
-    }
+.bg_test {
+  text-align:  center;    /* 文字中央寄せ */
+  padding:  150px;        /* 余白指定 */
+
+}
+
+.header-list {
+
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: serif;
+  background-position: top;
+  width: 100% ;
+  height: 100% ;
+  background-image: 
+  url("PAK15_notepenhikkiyougu20140312.jpg");
+  object-fit: cover;
+  font-size: 25px;
+}
+  
+.splash_text {
+  z-index: 10000;
+}
+
+header h1 {
+  color: #000000;
+  width: 40%;
+  margin: 20px ;
+  font-family: 'Bad Script', cursive;
+  font-size: 70px !important;
+}

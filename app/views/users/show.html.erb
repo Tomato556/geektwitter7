@@ -1,11 +1,13 @@
 <%= stylesheet_link_tag 'users', :media => "all" %>
 
-<section id="second-block">
-  <h1>user詳細</h1>
-  <p>名前 : <%= @user.name %></p>
-  <p>メールアドレス : <%= @user.email %></p>
-  <p>プロフィール : <%= @user.profile %></p>
 
+<section id="second-block">
+<div class="bg_pattern Paper_v2"></div>
+  <div class=tasks_pro>
+    <h1>user詳細</h1>
+    <p>名前 : <%= @user.name %></p>
+    <p>プロフィール : <%= @user.profile %></p>
+  </div>
   <% if current_user.id == @user.id %>
     <%= link_to "編集する", edit_user_registration_path %>
   <% end %>
@@ -17,24 +19,45 @@
   <h5>↓↓↓↓あなたのタスク投稿一覧↓↓↓↓</h5>
     <div class="tasks-container">
       <% @user.tasks.each do |t| %>
-        <br>
-        <br>
-        <div class="task">
-          <div class="main-box"><%= t.title %>
-            <div class="left-container">
-              <%= truncate(t.body, length:30) %>
-            </div>
-            <div class="right-container">
-                <%= link_to "詳細", task_path(t.id) %>
-              <br>
-              <% if user_signed_in? && current_user.id == t.user_id %>
-                <%= link_to "削除", task_path(t.id), method: :delete %>
-                <!--削除したらマイページに戻るようにしたいuser_path(current_user.id)-->
-              <% end %>
-            </div>
+        <div class="col-lg-4">
+          <div class="task">
+            <div style="background: #ccccbb; opacity: 0.2; transform: rotate(3deg); width: 35%; height: 35px; margin: 0 auto -1em auto;">
+            </div><!-- ここまで付箋テープ -->
+            
+            <div class="l-border l-p-t l-p-r l-p-b l-p-l" style="background: #ffffcc; box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15); padding: 25px 15px 15px 15px;">
+              <p style="margin: 0;">
+              <b><h4><%= t.title %></b></h4>
+                <div class="main-box"><br>
+                  <div class="left-container">
+                    <%= truncate(t.body, length:25) do%>
+                      (<%= link_to '続きを読む', task_path(t.id) %>
+                    <% end %>
+                  </div>
+                </div>
+                  <p class="time"><%= t.created_at.to_s(:datetime_jp) %></p>
+                <div class="right-container">
+                  <%= link_to "詳細", task_path(t.id) %>
+                  <% if user_signed_in? && current_user.id == t.user_id %>
+                    <%= link_to "削除", task_path(t.id), method: :delete %>
+                  <% end %>
+                  <% if user_signed_in? %>
+                    <% if current_user.already_liked?(t) %>
+                      <%= link_to task_like_path(id: t.id, task_id: t.id), method: :delete do %>
+                        <i class="fas fa-heartbeat fa-pink"></i><%= t.likes.count %>
+                      <% end %>
+                    <% else %>
+                      <%= link_to task_likes_path(id: t.id, task_id: t.id), method: :post do %>
+                        <i class="fas fa-heart"></i><%= t.likes.count %>
+                      <% end %>
+                    <% end %>
+                  <% else %>
+                    <i class="fas fa-heart"></i><%= t.likes.count %>
+                  <% end %>
+                </div>
+              </p>
+            </div><!-- ここまで付箋 -->
+            <p>&nbsp;</p>
           </div>
-          
-          <p class="time"><%= t.created_at.to_s(:datetime_jp) %></p>
         </div>
       <% end %>
     </div>
@@ -47,36 +70,31 @@
   <h5>↓↓↓↓あなたの息抜き投稿一覧↓↓↓↓</h5><br>
   <div class="relaxes-container">
     <% @user.relaxes.each do |t| %>
+    <div class="col-lg-4">
       <div class="relax">
         <b><%= t.title %></b>
         <br>
-        <%= image_tag t.image_url, size: "280x210" if t.image? %>
+        <%= link_to relax_path(t.id) do %>
+        <%= image_tag t.image_url ,size:"280x210" if t.image? %>
+        <% end %>
         <br>
         <div class="main-box">
-          <div class="left-container">
-              説明
-              <br>
-              <%= truncate(t.body, length:30) do%>
+
+              <%= truncate(t.body, length:20) do%>
                   (<%= link_to '続きを読む', relax_path(t.id) %>
               <% end %>
-          </div>
 
-          <div class="center-container">
-              <br>
-              <br>投稿者
-              <br>
-              <%= t.user.name %>
-          </div>
 
-          <div class="right-container">
+
               <% if user_signed_in? && current_user.id == t.user_id %>
                   <%= link_to "削除", relax_path(t.id), method: :delete %>
                   <%= link_to "編集", edit_relax_path(t.id) %>
               <% end %>
-          </div>
+
           <p class="time"><%= t.created_at.to_s(:datetime_jp) %></p>
         </div>
       </div>
+    </div>
     <% end %>
     </div>
   </div>

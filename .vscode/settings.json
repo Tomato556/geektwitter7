@@ -1,3 +1,7 @@
 {
-  "editor.find.autoFindInSelection": "always"
+  "editor.find.autoFindInSelection": "always",
+  "cSpell.words": [
+    "fontawesome",
+    "notepenhikkiyougu"
+  ]
 }

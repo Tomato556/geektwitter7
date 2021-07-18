@@ -5,3 +5,21 @@
 .field pt-3 {
   background-color: #fff;
 }
+
+input[type="text"] {
+  width: 100%;
+  height: 40px;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+}
+
+
+input[type="password"] {
+  width: 100%;
+  height: 40px;
+  background-color: #fff;
+  border: 1px solid #ced4da !important;
+  border-radius: 10px;
+}
+

@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag 'tomato', :media => "all" %>
   <div id="splash">
-    <div id="splash_text"></div>
+    <div id="splash_text" style="z-index:100"></div>
   </div>
       <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://rawgit.com/kimmobrunfeldt/progressbar.js/master/dist/progressbar.min.js"></script>
@@ -9,23 +9,7 @@
 <html lang="ja">
 
 <section id="first-block">
-    <div class="title-container">
-<br><br><br><br>
-        <div class="bg_test">
-            <div class="bg_test-text">
-            <h1>とまとのプロダクトにようこそ！</h1>
-            <br>
-            <h2>Let's do the task together!!</h2>
-            <h3><%= link_to "ログイン", new_task_path %>
-            <%= link_to "新規登録", new_user_registration_path %></h3>
-                <%= link_to tasks_path do %>
-                    <br>
-                    <%= link_to "タスク一覧", tasks_path %>
-                    <%= link_to "息抜き一覧", relaxes_cards_path %>
-                <% end %>
-            </div>
-        </div>
-    </div>
+
 </section>
 
     
