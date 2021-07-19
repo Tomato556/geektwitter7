@@ -39,7 +39,7 @@ class TasksController < ApplicationController
     redirect_to action: :index
   end
 
-  def hiyo
+  def tommy
     
   end
 
